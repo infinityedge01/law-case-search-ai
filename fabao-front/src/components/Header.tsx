@@ -78,14 +78,15 @@ const Header: React.FC = () => {
             <div
               className={styles.sidebarDimmer + sidebarOpenStatusClassName}
               onClick={() => setSidebarOpen(false)}
-            ></div>
+            >
+            </div>
             <Sidebar
               as={Menu}
               className={styles.sidebarMenu + sidebarOpenStatusClassName}
               animation="push"
               direction="right"
               vertical
-              visible
+              visible={sidebarOpen}
             >
               <Menu.Item
                 as={Link}

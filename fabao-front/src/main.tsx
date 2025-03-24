@@ -1,7 +1,7 @@
 import { createRoot } from 'react-dom/client';
 import { BrowserRouter, Navigate, Route, Routes } from 'react-router-dom';
 import { Helmet } from 'react-helmet';
-import { Container } from 'semantic-ui-react';
+import { Container} from 'semantic-ui-react';
 import { StrictMode } from 'react';
 import React, { lazy, Suspense, useEffect, useState } from 'react';
 import Header from '@/components/Header';
@@ -14,6 +14,7 @@ import styles from './main.module.less';
 
 // Pages
 const Home = lazy(() => import('./pages/Home'));
+const SearchPage = lazy(() => import('./pages/SearchPage'));
 
 const App: React.FC = () => {
   const [loadedPage, setLoadedPage] = useState(false);
@@ -40,6 +41,7 @@ const App: React.FC = () => {
     <Suspense fallback={<Loading />}>
       <Routes>
         <Route path="/" element={<Home />} />
+        <Route path="/search" element={<SearchPage />} />
       </Routes>
     </Suspense>
   );
