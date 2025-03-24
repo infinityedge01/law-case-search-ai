@@ -6,10 +6,6 @@ import { StrictMode } from 'react';
 import React, { lazy, Suspense, useEffect, useState } from 'react';
 import Header from '@/components/Header';
 import Loading from '@/components/Loading';
-import {
-  enableAutoPageviews,
-  enableAutoTrackMultiDomain,
-} from './libs/plausible';
 
 // Styles
 import 'semantic-ui-css/semantic.min.css'
@@ -34,9 +30,6 @@ const App: React.FC = () => {
       }
     })();
   }, []);
-
-  useEffect(() => enableAutoPageviews(), []);
-  useEffect(() => enableAutoTrackMultiDomain(), []);
 
   // 加载中
   if (!loadedPage) {
