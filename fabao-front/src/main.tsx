@@ -20,18 +20,17 @@ import styles from './main.module.less';
 const Home = lazy(() => import('./pages/Home'));
 
 const App: React.FC = () => {
-  const [loadedOIerDb, setLoadedOIerDb] = useState(false);
-  const [errorLoadingOIerDb, setErrorLoadingOIerDb] = useState(false);
+  const [loadedPage, setLoadedPage] = useState(false);
+  const [errorLoadingPage, setErrorLoadingPage] = useState(false);
   const [progress, setProgress] = useState(0);
 
   useEffect(() => {
     (async () => {
-      // 加载 OIerDb
       try {
-        setLoadedOIerDb(true);
+        setLoadedPage(true);
       } catch (e) {
         console.error(e);
-        setErrorLoadingOIerDb(true);
+        setErrorLoadingPage(true);
       }
     })();
   }, []);
@@ -40,7 +39,7 @@ const App: React.FC = () => {
   useEffect(() => enableAutoTrackMultiDomain(), []);
 
   // 加载中
-  if (!loadedOIerDb) {
+  if (!loadedPage) {
     return <Loading progress={progress} />;
   }
 
