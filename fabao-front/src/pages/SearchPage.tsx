@@ -1,8 +1,8 @@
 import React from 'react';
-import FAQ from '@/components/FAQ';
+import SearchTool from '@/components/SearchTool';
 const SearchPage: React.FC = () => (
   <>
-    <FAQ />
+    <SearchTool />
   </>
 );
 

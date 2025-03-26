@@ -1,0 +1,102 @@
+.searchContainer {
+    margin: 2rem 0;
+    margin-bottom: 2rem;
+}
+
+.instructions {
+    margin-bottom: 1.5rem !important;
+    line-height: 1.6 !important;
+}
+
+.searchInput {
+    font-size: 1.1rem !important;
+    margin-bottom: 1.5rem !important;
+    resize: none;
+    border: 1px solid rgba(34, 36, 38, 0.15) !important;
+    border-radius: 0.28571429rem !important;
+    transition: border-color 0.2s ease, box-shadow 0.2s ease !important;
+    min-height: 200px !important;
+
+    &:focus {
+        border-color: #85b7d9 !important;
+        box-shadow: 0 0 0 1px #85b7d9 !important;
+    }
+}
+
+.submitButton {
+    margin-bottom: 0.5rem !important;
+    margin-top:  0.5rem !important;
+}
+
+.header {
+    margin-top: 1rem !important;
+    margin-bottom: 0 !important;
+}
+
+.searchModeSelector {
+    padding: 0.8rem !important;
+    border-bottom: none !important;
+}
+
+// 手动检索相关样式
+.keywordGroupsContainer {
+    margin-bottom: 0.5rem;
+}
+
+.keywordGroup {
+    margin-bottom: 0.5rem;
+    padding: 1rem;
+    border: 1px solid rgba(34, 36, 38, 0.15);
+    border-radius: 0.28571429rem;
+    position: relative;
+}
+
+.groupLabel {
+    margin-bottom: 0.5rem !important;
+    display: flex !important;
+    align-items: center !important;
+}
+
+.deleteIcon {
+    margin-left: 0.5rem !important;
+    cursor: pointer;
+
+    &:hover {
+        color: #db2828;
+    }
+}
+
+.keywordInputs {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+}
+
+.keywordInput {
+    flex: 1;
+    min-width: 120px;
+}
+
+.relationDropdown {
+    min-width: 100px;
+    margin: 0 0.5rem !important;
+}
+
+.addGroupButton {
+    
+    margin-top: 0.5rem !important;
+    margin-bottom: 0.5rem !important;
+}
+
+@media (max-width: 767px) {
+    .keywordInputs {
+        flex-direction: column;
+        align-items: stretch;
+    }
+
+    .relationDropdown {
+        margin: 0.5rem 0 !important;
+        width: 100%;
+    }
+}
