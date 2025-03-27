@@ -1,0 +1,17 @@
+__pycache__
+*.py[cod]
+*.pyo
+*.pyd
+*.db
+*.sqlite3
+*.egg-info/
+__pycache__/
+*.log
+*.pot
+*.mo
+*.po
+*.swp
+config.py
+.idea/
+.vscode/
+.DS_Store
