@@ -23,3 +23,9 @@ def autosearch():
     results = auto_search(data)
     response = generate_response(data=results, status=200)
     return response
+
+
+@api.route('/proxy/token', methods=['POST'])
+@cross_origin()
+def get_token():
+    pass

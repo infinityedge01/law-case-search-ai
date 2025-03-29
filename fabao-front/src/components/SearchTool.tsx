@@ -1,6 +1,9 @@
 import React, { useState } from 'react';
 import { Button, Form, Header, Segment, TextArea, Message, Input, Dropdown, Icon, Label } from 'semantic-ui-react';
 import styles from './SearchTool.module.less';
+import { apiPost } from '@/utils/callAPI';
+import { json } from 'stream/consumers';
+import { parse } from 'path';
 
 // 关键词组类型定义
 interface KeywordGroup {
@@ -38,6 +41,38 @@ const SearchTool: React.FC = () => {
       if (!searchText.trim()) return;
       // 自动检索逻辑
       console.log('自动检索内容:', searchText);
+      apiPost('/search/auto', { text: searchText })
+        .then(response => {
+
+          if (response.error) {
+            console.error('自动检索错误:', response.error);
+            setIsSearching(false);
+            return;
+          }
+          // 处理自动检索结果
+          console.log('自动检索结果:', response.data);
+          setKeywordGroups(response.data);
+          // 使用服务器端代理请求来避免CORS问题
+          apiPost('/proxy/token', { 
+            data: null,
+          })
+          .then(proxyResponse => {
+            if (proxyResponse.error) {
+              console.error('代理检索错误:', proxyResponse.error);
+            } else {
+              console.log('代理检索结果:', proxyResponse.data);
+              // 处理代理结果
+            }
+          })
+          .catch(error => {
+            console.error('代理请求错误:', error);
+          });
+        })
+        .catch(error => {
+          console.error('自动检索错误:', error);
+        }).finally(() => {
+          setIsSearching(false);
+        });
     } else {
       // 手动检索逻辑
       const validGroups = keywordGroups.filter(group =>
@@ -46,12 +81,9 @@ const SearchTool: React.FC = () => {
 
       if (validGroups.length === 0) return;
       console.log('手动检索关键词组:', validGroups);
-    }
-
-    // 模拟搜索完成
-    setTimeout(() => {
       setIsSearching(false);
-    }, 1000);
+    }
+    
   };
 
   // 关键词组操作函数
@@ -134,7 +166,7 @@ const SearchTool: React.FC = () => {
                   <>
                     请在下方输入框中输入你的详细检索要求，例如案件特征，关键信息等。
                     <br />
-                    系统会根据你的输入自动生成检索关键词，并进行检索。
+                    系统会根据你的输入自动生成检索关键词。
                   </>
                 </p>
               </Message>
